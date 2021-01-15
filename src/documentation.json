@@ -1,0 +1,84 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "ingaia-fixed-price-api",
+    "version": "1.0.0",
+    "description": "api that returns the fixed price of the square meter"
+  },
+  "paths": {
+    "/square-meter": {
+      "post": {
+        "tags": [
+          "Square Meter"
+        ],
+        "description": "Get total price square meter",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/SquareMeter"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Simple"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Simple"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SquareMeter": {
+      "type": "object",
+      "properties": {
+        "price": {
+          "type": "number"
+        },
+        "example": {
+          "min": {
+            "value": 10
+          },
+          "max": {
+            "value": 10000
+          }
+        }
+      }
+    },
+    "Simple": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "components": {},
+  "tags": []
+}
